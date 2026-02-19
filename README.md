@@ -16,6 +16,13 @@ This package contains scripts to run WRF simulations driven by ERA-5 reanalysis 
 
 ## Setup
 
+Clone this repository to a directory of your choice.
+
+```bash
+cd /data/scratch/a/${USER}/
+git clone https://github.com/snesbitt/era5_wrf_package.git
+```
+
 Run once before submitting any jobs:
 
 ```bash
