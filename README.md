@@ -80,14 +80,21 @@ All working files use `/data/scratch/a/$USER/wrf_runs/`:
 ## Usage
 
 ### Basic Usage
+### Basic Usage
 ```bash
-sbatch wrf_driver_era5.sh <YYYYMMDDHH> <hours> <output_dir>
+sbatch wrf_driver_era5.sh <YYYYMMDDHH> <hours> [output_dir]
 ```
 
 ### Example
 Run a 72-hour simulation starting Jan 1, 2024 00Z:
 ```bash
-sbatch wrf_driver_era5.sh 2024010100 72 /path/to/output
+# Output defaults to ./era5/2024010100/ in the current directory
+sbatch wrf_driver_era5.sh 2024010100 72
+```
+
+Or specify a custom output directory:
+```bash
+sbatch wrf_driver_era5.sh 2024010100 72 /path/to/custom/output
 ```
 
 ### Monitoring
@@ -138,5 +145,26 @@ Monitor `/data/scratch/a/$USER/wrf_runs/` and clean old runs as needed.
 ## Notes
 - ERA-5 provides hourly data (finer than IFS 3-hourly)
 - Uses same domain configuration as IFS system
-- Output saved to user-specified directory
+- Output saved to `./era5/<YYYYMMDDHH>/` by default, or user-specified directory
+
+## Visualization
+The included Jupyter notebook `plot_wrf_era5.ipynb` provides interactive visualization of the WRF output.
+
+### Features
+- **Topography Map**: Displays the model domain terrain.
+- **Reflectivity & Wind**: Select a specific time to plot composite reflectivity and 10m wind barbs.
+  - *Configuration*: Set `TARGET_TIME` in Section 2 (format `YYYYMMDD HH:MM`). The notebook automatically finds the closest output file.
+- **Interactive Animation**: Animates reflectivity and winds over the entire forecast duration using a slider.
+
+### Running the Notebook
+1. Ensure the `wrf-python3.12` environment is active and registered as a kernel:
+   ```bash
+   conda activate wrf-python3.12
+   python -m ipykernel install --user --name=wrf-python3.12
+   ```
+2. Launch Jupyter:
+   ```bash
+   jupyter notebook plot_wrf_era5.ipynb
+   ```
+3. Set your target time in the "USER CONFIGURATION" cell and run all cells.
 - Working files automatically use scratch space
