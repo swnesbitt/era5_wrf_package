@@ -1,0 +1,11 @@
+era5/
+logs/
+__pycache__/
+.ipynb_checkpoints/
+wrfout*
+rsl.*
+wrf_input*
+met_em*
+geo_em*
+.wrf_config
+*.pyc

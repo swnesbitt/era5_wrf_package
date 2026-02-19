@@ -1,0 +1,18 @@
+name: wrf-python3.12
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - numpy
+  - matplotlib
+  - netCDF4
+  - arm_pyart
+  - xarray
+  - cartopy
+  - wrf-python
+  - ipywidgets
+  - ipympl
+  - pip
+  - pip:
+    - cdsapi
