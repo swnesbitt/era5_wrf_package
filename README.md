@@ -16,7 +16,7 @@ This package contains scripts to run WRF simulations driven by ERA-5 reanalysis 
 
 ## Setup
 
-Clone this repository to a directory of your choice.
+Clone this repository to a directory of your choice on `keeling.
 
 ```bash
 cd /data/scratch/a/${USER}/
