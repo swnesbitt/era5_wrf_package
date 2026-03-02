@@ -83,7 +83,8 @@ def main():
     os.makedirs(wrf_base, exist_ok=True)
     if os.path.exists(wrfrun_dir):
         subprocess.call(f"rm -rf {wrfrun_dir}", shell=True)
-    subprocess.call(f"cp -R {wrftemplate_dir} {wrfrun_dir}", shell=True)
+    os.makedirs(wrfrun_dir, exist_ok=True)
+    subprocess.call(f"cp -R {wrftemplate_dir}/. {wrfrun_dir}/", shell=True)
 
     # WPS Setup
     os.chdir(wps_dir)
@@ -105,6 +106,7 @@ def main():
 
     # Namelist WPS
     subprocess.call(f"cp {scripts_dir}namelist.wps.template ./namelist.wps", shell=True)
+    subprocess.call("chmod u+w ./namelist.wps", shell=True)
     
     replace_str('namelist.wps', 'STARTDATE', st_wps)
     replace_str('namelist.wps', 'ENDDATE', et_wps)
@@ -136,6 +138,7 @@ def main():
     # WRF Namelist Setup
     os.chdir(wrfrun_dir)
     subprocess.call(f"cp {scripts_dir}namelist.input.template namelist.input", shell=True)
+    subprocess.call("chmod u+w namelist.input", shell=True)
 
     replace_str('namelist.input', 'STYR', styr)
     replace_str('namelist.input', 'STMO', stmo)
