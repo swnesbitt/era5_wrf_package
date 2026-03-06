@@ -20,7 +20,7 @@ Clone this repository to a directory of your choice on `keeling.
 
 ```bash
 cd /data/scratch/a/${USER}/
-git clone https://github.com/snesbitt/era5_wrf_package.git
+git clone https://github.com/swnesbitt/era5_wrf_package.git
 ```
 
 Run once before submitting any jobs:
